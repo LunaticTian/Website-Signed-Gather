@@ -55,7 +55,7 @@ def getYGB():
         driver.add_cookie(cookie1)
     driver.refresh()
 
-    time.sleep(2)
+    time.sleep(75)
     driver.quit()
 
 
