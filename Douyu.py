@@ -88,7 +88,7 @@ def mainApi(sum,idList,nubList):
         for i in range(len(idList)):
             for nub in range(int(nubList[i])):
                 data = 'dy=99b3bf61409e9782aee70daf00071501&prop_id=268&num=1&sid=' + cookies[
-                    'acf_uid'] + '&did=204389&rid=' + idList[0] + '&is_jz=0'
+                    'acf_uid'] + '&did=204389&rid=' + idList[i] + '&is_jz=0'
                 Result = s.post(url=url, data=data, headers=headers)
                 k = Result.text
                 json1 = json.loads(k)
