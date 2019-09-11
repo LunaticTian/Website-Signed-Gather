@@ -5,7 +5,7 @@ import time
 import configparser
 
 
-# Qq494296145
+
 config = configparser.ConfigParser()
 # 编码要设置成utf-8-sig而并不是utf-8
 config.read('Setting.conf', encoding='utf-8-sig')
