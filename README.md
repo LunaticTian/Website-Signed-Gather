@@ -1,11 +1,18 @@
 # Website-Signed-Gather
-斗鱼(douyu)荧光棒自动赠送，粉丝牌保牌升级，村花(cunhua)自动签到/增加在线时间(挂机)，几鸡(SSR)流量签到。邮件提醒，微信查看签到情况！
+斗鱼(douyu)荧光棒自动赠送，粉丝牌保牌升级，村花(cunhua)自动签到/增加在线时间(挂机)，几鸡(SSR)流量签到。邮件提醒，微信推送查看签到情况！
 陆续增加其他网站签到工具.....
 ## 适用范围
 * 斗鱼(douyu.com)粉丝牌保牌
 * 村花(cunhua.cc)自动签到领取金币，同时保持24小时在线，增加在线时间
 * 几鸡(jj-b.pw)自动签到领取SS流量
 * 逐步增加
+
+## 更新日志
+
+* 2019/08/15 V0.1
+* 2019/08/19 解决斗鱼签到未登录问题
+* 2019/08/23 解决村花修改登录模块问题
+* 2019/09/25 增加微信推送功能
 
 ## 相关依赖
 
@@ -28,13 +35,27 @@
 ## 准备步骤
 
 * 准备几鸡，村花账号一个(账号，密码)
-* 准备126邮箱一个，且开启smtp，获得第三方登录密码
+* (1/2)准备[Server酱](http://sc.ftqq.com)SCKEY码一个
+* (2/2)或者准备126邮箱一个，且开启smtp，获得第三方登录密码
 * 准备Douyu Cookie
 	* 登录douyu，输入账号密码。
 	* 呼出浏览器控制台，选择Network
 	* 找到Name为rtpv的请求，复制Request Headers中的cookie部分
 	* 记录需要签到粉丝牌的直接间号
 ## Setting.conf 参数说明
+
+
+### Setting
+
+**功能选择**
+
+* push：选择推送方式 0为邮箱推送，1为微信推送 例:1
+
+需要开启的功能，后置为1，不需要开启的功能后置为0
+
+* cunhua：村花开关 例：1
+* jiji:几鸡开关 例：1
+* douyu:斗鱼开关 例：0
 
 ### Email
 * User:126邮箱账号
@@ -77,16 +98,6 @@ list = 123-321-32154</br>
 num = 0</br>
 sum = 60</br>
 
-### Setting
-
-**功能选择**
-
-需要开启的功能，后置为1，不需要开启的功能后置为0
-
-
-* cunhua：村花开关 例：1
-* jiji:几鸡开关 例：1
-* douyu:斗鱼开关 例：0
 
 
 
@@ -107,7 +118,14 @@ sum = 60</br>
 ## 效果图
 
 
-### 微信提醒
+
+### 微信推送
+![](http://cdn.lunatic.wang/wecatpush.jpg)
+![](http://cdn.lunatic.wang/wecat1.jpg)
+![](http://cdn.lunatic.wang/wecat2.jpg)
+
+
+### 邮箱提醒
 
 ![](http://img.lunatic.wang/qd1.jpg)
 ![](http://cdn.lunatic.wang/qd.jpg)

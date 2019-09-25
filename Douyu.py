@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import random
+
 import requests
 import json
 import time
@@ -30,37 +32,6 @@ def init(cookie):
     headers['Cookie'] = cookie
 
 
-
-def getYGB():
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=chrome_options)
-
-    driver.get('https://www.douyu.com/9999')
-    for i in cookies.keys():
-
-        cookie1 = {
-            'domain': '.douyu.com',
-            'name': i,
-            'value': cookies[i],
-            'expires': '',
-            'path': '/',
-            'httpOnly': False,
-            'HostOnly': False,
-            'Secure': False,
-        }
-        driver.add_cookie(cookie1)
-    driver.refresh()
-
-    time.sleep(75)
-    driver.quit()
-
-
-
-
 headers = {
             'Host': 'www.douyu.com',
             'Connection': 'keep-alive',
@@ -74,6 +45,39 @@ headers = {
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'zh-CN,zh;q=0.9'
 }
+
+def getYGB():
+
+    proxy = random.choice(json_resp['proxies'])
+    chrome_options = Options()
+    print("--proxy-server=http://{}:{}".format(proxy['ip'], proxy['port']))
+    #chrome_options.add_argument("--proxy-server=http://{}:{}".format(proxy['ip'], proxy['port']))
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get('https://www.douyu.com/9999')
+    for i in cookies.keys():
+        cookie1 = {
+            'domain': '.douyu.com',
+            'name': i,
+            'value': cookies[i],
+            'expires': '',
+            'path': '/',
+            'httpOnly': False,
+            'HostOnly': False,
+            'Secure': False,
+        }
+        driver.add_cookie(cookie1)
+    driver.refresh()
+
+    time.sleep(70)
+    driver.quit()
+
+
+
+
 
 
 
@@ -110,7 +114,7 @@ def mainApi(sum,idList,nubList):
 
 
 
-
+## 7890
 
 
 def main(cookies,sum,idList,nubList):

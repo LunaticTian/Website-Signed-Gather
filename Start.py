@@ -1,9 +1,16 @@
 import cunhua,jiji,Douyu,configparser,hashlib
 from urllib import parse
+import os, sys
+from Email import mail
+
+mail("定时任务","Centos")
+
+
+parent_dir = os.path.dirname(os.path.abspath(__file__))
 
 config = configparser.RawConfigParser()
-config.read('Setting.conf', encoding='utf-8-sig')
 
+config.read(parent_dir+'/Setting.conf', encoding='utf-8-sig')
 # Setting
 
 dDouyu = config.get('Setting','douyu')

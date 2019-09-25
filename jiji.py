@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests,chardet
 from Email import mail
 
@@ -51,5 +52,3 @@ def main(User,PassWord):
     mail(Content=Content,Title="几鸡流量签到情况")
     r.close()
 
-if __name__ == '__main__':
-    main("loveforyou")
