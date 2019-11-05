@@ -48,11 +48,7 @@ headers = {
 }
 
 def getYGB():
-
-    proxy = random.choice(json_resp['proxies'])
     chrome_options = Options()
-    print("--proxy-server=http://{}:{}".format(proxy['ip'], proxy['port']))
-    #chrome_options.add_argument("--proxy-server=http://{}:{}".format(proxy['ip'], proxy['port']))
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-gpu')
@@ -89,11 +85,6 @@ def getYGB():
 
 
 def mainApi(sum,idList,nubList):
-    proxy = random.choice(json_resp['proxies'])
-    proxies = {
-        "http": "http://{}:{}".format(proxy['ip'], proxy['port']),
-        "https": "http://{}:{}".format(proxy['ip'], proxy['port']),
-    }
     s = requests.Session()
     if sum == 0:
         for i in range(len(idList)):
