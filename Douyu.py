@@ -20,6 +20,7 @@ url = 'https://www.douyu.com/member/prop/send'
 cookies={}
 # 存放cookie
 list1 = []
+json_resp = requests.get('http://47.100.21.174:8899/api/v1/proxies?limit=60').json()
 
 
 def init(cookie):
@@ -71,8 +72,9 @@ def getYGB():
         }
         driver.add_cookie(cookie1)
     driver.refresh()
-
     time.sleep(70)
+    driver.refresh()
+    time.sleep(15)
     driver.quit()
 
 
@@ -87,6 +89,11 @@ def getYGB():
 
 
 def mainApi(sum,idList,nubList):
+    proxy = random.choice(json_resp['proxies'])
+    proxies = {
+        "http": "http://{}:{}".format(proxy['ip'], proxy['port']),
+        "https": "http://{}:{}".format(proxy['ip'], proxy['port']),
+    }
     s = requests.Session()
     if sum == 0:
         for i in range(len(idList)):
