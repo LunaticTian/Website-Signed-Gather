@@ -17,8 +17,6 @@ heards = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9'
 }
-
-
 cookies = {}
 def init(cookie):
     c = cookie
@@ -26,8 +24,6 @@ def init(cookie):
     #其设置为1就会把字符串拆分成2份
         name,value=line.strip().split('=',1)
         cookies[name]=value
-
-
 
 def main(Cookie):
     init(Cookie)

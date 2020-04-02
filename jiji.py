@@ -2,9 +2,6 @@
 import requests,chardet
 from Email import mail
 
-
-
-
 def main(User,PassWord):
         # 加入session
     r = requests.Session()
@@ -31,7 +28,6 @@ def main(User,PassWord):
         # 获取formhash
     print(chardet.detect(c.content))
     # ascii 解码
-
     headers1 = {'Host': 'ji-c.pw',
                 'Connection': 'keep-alive',
                 'Content-Length': '0',
@@ -47,7 +43,6 @@ def main(User,PassWord):
                 }
         # 签到
     c3 = r.post(url='https://ji-c.pw/user/checkin',headers=headers1,verify=False)
-
     Content = c3.content.decode('unicode_escape')
     mail(Content=Content,Title="几鸡流量签到情况")
     r.close()
