@@ -19,7 +19,7 @@
 * 2019/11/05 增加V2EX签到功能
 * 2020/01/03 增加金蝶签到(kingdee)
 * 2020/04/02 优化代码，去除Douyu Selenium模块
-  * 通过分析**[binux](https://github.com/binux/qiandao)**代码优化，重写Douyu模块
+  * 通过分析[binux](https://github.com/binux/qiandao)代码优化，重写Douyu模块
 
 ## 相关依赖
 
