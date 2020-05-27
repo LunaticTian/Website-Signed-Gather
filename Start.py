@@ -14,16 +14,10 @@ jJiji = config.get('Setting','jiji')
 V2ex = config.get('Setting','v2ex')
 
 # cunhua
-cunhuaUser = None
-cunhuaPassWord = None
+cunhuaCookie = None
 if cCunhua == '1':
-    cunhuaUser = config.get('cunhua','User')
-    cunhuaUser = parse.quote(cunhuaUser)
-    cunhuaPassWord = config.get('cunhua','PassWord')
-    m = hashlib.md5()
-    m.update(cunhuaPassWord.encode())
-    str_md5 = m.hexdigest()
-    cunhuaPassWord = str_md5
+    cunhuaCookie = config.get('cunhua','Cookie')
+
 
 # jiji
 jijiUser = None
@@ -62,7 +56,7 @@ if __name__ == '__main__':
     if V2ex == '1':
         v2ex.main(v2exC)
     if cCunhua == '1':
-        cunhua.main(cunhuaUser,cunhuaPassWord)
+        cunhua.main(cunhuaCookie)
     
 
 
