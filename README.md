@@ -22,26 +22,25 @@
   * 通过分析[binux](https://github.com/binux/qiandao)代码优化，重写Douyu模块。
 * 2020/05/27 修复由村花论坛更新导致的签到脚本失效。
     * 2020/04/02更新已失效
+* 2020/07/15 修复斗鱼脚本失效
 ## 相关依赖
 
 * Python 3+
 	* requests
 * Douyu
-	* ~~Chrome~~
-	* ~~Selenium~~
-	* ~~Webdriver~~
+	* Chrome
+	* Selenium
+	* Webdriver
 	
 
-~~**说明：斗鱼粉丝牌签到部分涉及Selenium，用到此部分者需要安装相关依赖，如若不需，则安装requests即可。**~~
+说明：斗鱼粉丝牌签到部分涉及Selenium，用到此部分者需要安装相关依赖，如若不需，则安装requests即可。
 
 ## 环境配置
-### ~~Windows~~
+### Windows
 
-* ~~[安装教程](https://www.cnblogs.com/eternal1025/p/8880245.html)~~
-### ~~Linux~~
-* ~~[安装教程](https://blog.csdn.net/zzzcl112/article/details/80470884)~~
-
-### 以上环境配置通过4/2日更新已无意义。
+* [安装教程](https://www.cnblogs.com/eternal1025/p/8880245.html)
+### Linux
+* [安装教程](https://blog.csdn.net/zzzcl112/article/details/80470884)
 
 
 
