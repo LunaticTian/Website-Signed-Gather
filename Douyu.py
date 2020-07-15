@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import random
+
 import requests
 import json
 import time
 from Email import mail
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from itertools import product
 
 
@@ -14,10 +17,10 @@ from itertools import product
 c = ''
 # 斗鱼礼物接口
 url = 'https://www.douyu.com/member/prop/send'
-urlH5 = 'https://www.douyu.com/swf_api/h5room/9999'
 cookies={}
 # 存放cookie
 list1 = []
+
 
 def init(cookie):
     c = cookie
@@ -25,6 +28,7 @@ def init(cookie):
     #其设置为1就会把字符串拆分成2份
         name,value=line.strip().split('=',1)
         cookies[name]=value
+
     headers['Cookie'] = cookie
 
 
@@ -36,28 +40,42 @@ headers = {
             'Origin': 'https://www.douyu.com',
             'X-Requested-With':'XMLHttpRequest' ,
             'User - Agent': 'Mozilla / 5.0(Windows NT 10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 65.0.3325.181Safari / 537.36',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Referer': 'https://www.douyu.com/9999',
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'zh-CN,zh;q=0.9'
 }
-
-headersH5Rome = {
-            'Host': 'www.douyu.com',
-            'Connection': 'keep-alive',
-            'Accept': 'application/json, text/javascript, */*; q=0.01',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Origin': 'https://www.douyu.com',
-            'X-Requested-With':'XMLHttpRequest' ,
-            'User-Agent': 'Mozilla / 5.0(Windows NT 10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 65.0.3325.181Safari / 537.36',
-            'Referer': 'https://www.douyu.com/',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
-            'TE':'Trailers'
-}
-# 获取荧光棒数量/用以取代Selenium库相关代码
+print("waibu")
 def getYGB():
-    requests.get(url=urlH5,headers=headersH5Rome)
-# 分发荧光棒
+    #proxy = random.choice(json_resp['proxies'])
+    chrome_options = Options()
+    #print("--proxy-server=http://{}:{}".format(proxy['ip'], proxy['port']))
+    #chrome_options.add_argument("--proxy-server=http://{}:{}".format(proxy['ip'], proxy['port']))
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(chrome_options=chrome_options)
+
+    driver.get('https://www.douyu.com/9999')
+    for i in cookies.keys():
+        cookie1 = {
+            'domain': '.douyu.com',
+            'name': i,
+            'value': cookies[i],
+            'expires': '',
+            'path': '/',
+            'httpOnly': False,
+            'HostOnly': False,
+            'Secure': False,
+        }
+        driver.add_cookie(cookie1)
+    driver.refresh()
+    time.sleep(10)
+    driver.refresh()
+    time.sleep(10)
+    driver.quit()
+    
 def mainApi(sum,idList,nubList):
     s = requests.Session()
     if sum == 0:
@@ -83,15 +101,6 @@ def mainApi(sum,idList,nubList):
             if si == sum:
                 break
             time.sleep(1)
-
-def main(cookies,sum,idList,nubList):
-    init(cookie=cookies)
-    getYGB()
-    mainApi(sum,idList,nubList)
-    mail(str(list1),"斗鱼签到情况")
-
-
-
 
 
 
